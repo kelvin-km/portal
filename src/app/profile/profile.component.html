@@ -1,0 +1,87 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="block-header">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <ul class="breadcrumb breadcrumb-style ">
+            <li class="breadcrumb-item">
+              <h4 class="page-title">User Profile</h4>
+            </li>
+            <li class="breadcrumb-item bcrumb-2">
+              <a routerLink="/users/users-list/" onClick="return false;">Users</a>
+            </li>
+            <li class="breadcrumb-item active">Profile</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row clearfix">
+      <div class="col-lg-5 col-md-12">
+        <div class="card">
+          <div class="m-b-20">
+            <div class="contact-grid">
+              <div class="profile-header bg-dark">
+                <div class="user-name"></div>
+              </div>
+              <img [src]="userdata.imageUrl?userdata.imageUrl:'assets/images/user.png'"  class="user-img" alt="">
+              <p>
+                <br />{{userdata.firstName+ ' ' +userdata.middleName+ ' '+ userdata.middleName}}
+              </p>
+              <div>
+                <!--                                <span class="phone">-->
+                <!--                                    <i class="material-icons">phone</i>264-625-2583</span>-->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-7 col-md-12">
+        <div class="card">
+          <div class="profile-tab-box">
+            <div class="p-l-20">
+              <ul class="nav "></ul>
+            </div>
+          </div>
+        </div>
+        <div >
+          <div id="usersettings" aria-expanded="false">
+            <div class="card">
+              <div class="header">
+                <h2>
+                  <strong>Setting</strong> Update your password</h2>
+              </div>
+              <div class="body">
+                <form #passform="ngForm" (ngSubmit)="ChangePass($event, passform)" autocomplete="off">
+                  <input type="password" minlength="2" class="form-control" [(ngModel)]="ipassword.old_password" name="old_password" #old_password="ngModel"
+                         placeholder="Old Password" required="true" autocomplete="new-password">
+                  <p class="col-red" *ngIf="old_password?.errors && old_password.touched">Old Password required or invalid (minimum 2 character)
+                  </p>
+                  <input type="password" minlength="4" class="form-control" [(ngModel)]="ipassword.new_password" name="new_password" #new_password="ngModel"
+                         placeholder="New Password" required="true" autocomplete="new-password">
+                  <p class="col-red" *ngIf="new_password?.errors && new_password.touched">New Password required or invalid (minimum 4 character)
+                  </p>
+
+                  <input class="form-control" type="password"  name="equalTo" [(ngModel)]="ipassword.confirm_password" name="confirm_password" #confirm_password="ngModel"
+                         placeholder="Confirm Password" required="true" autocomplete="new-password"
+                         #equalTo="ngModel" [equalTo]="new_password"
+                         placeholder="Confirm password" />
+                  <p class="col-red" *ngIf="equalTo?.errors?.equalTo">Confirm password not equal new password</p>
+                  <button class="btn btn-info btn-round m-t-20"  [disabled]="!passform.valid">Save Changes</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Edit Record Modal Window -->
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalLabel" aria-hidden="true"></div>
+
+
+  </div>
+</section>

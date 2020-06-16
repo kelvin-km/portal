@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+#mapid { height: 80vh; }
+.search-drop-down {
+  position: absolute;
+  width: 80%;
+  padding: 10px;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 1;
+  background-color: white;
+  font-family: sans-serif;
+  opacity: 1;
+}
+
+.search-results:hover {
+  padding: 10px;
+  background: #8490a0;
+  //color: blue;
+}
+.search-results {
+  //color: blue;
+  padding: 10px;
+}
+
+

@@ -1,0 +1,145 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="block-header">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <ul class="breadcrumb breadcrumb-style ">
+            <li class="breadcrumb-item">
+              <h4 class="page-title">Users</h4>
+            </li>
+            <li class="breadcrumb-item bcrumb-2">
+              <a routerLink="/dashboard/main" >Home</a>
+            </li>
+            <li class="breadcrumb-item active">Manage portal Users</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="row clearfix">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+          <div class="body">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="row">
+                  <div class="col-sm-4">
+                    <input id="search-input" placeholder="Search Projects" type="text"
+                           (keyup)='filterDatatable($event)' required>
+                  </div>
+                  <div class="col-sm-4 ">
+                  </div>
+                  <div class="col-sm-2">
+                  </div>
+                  <div class="col-sm-1 ">
+                    <ul class="header-buttons m-r-20" >
+                      <li>
+                        <div class="button-demo">
+                          <a  routerLink="/users/create_user"
+                                     class="btn btn-outline-success btn-border-radius">Create</a>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <ngx-datatable #table class="material" [rows]="data" [columns]="columns"
+                               [sortType]="'multi'" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50"
+                               [rowHeight]="'60'" [limit]="20" [externalPaging]="true" [count]="count" [offset]="pageNumber"
+                               (page)="fetch($event)">
+                  <!-- user image -->
+                  <ngx-datatable-column name="First Name"  prop="First Name"  >
+                    <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+                      <td class="table-img padding-0">
+                        <a (click)="viewRow(row)" routerLink="/users/users-list" >
+                          <img width="40"  [src]="row.imageUrl?row.imageUrl:'assets/images/user.png'" />
+                          {{row.firstName}}</a>
+                      </td>
+                    </ng-template>
+                  </ngx-datatable-column>
+                  <ngx-datatable-column [width]="110"  name="Middle Name"  prop="middleName"></ngx-datatable-column>
+                  <ngx-datatable-column [width]="110"  name="Surname"  prop="surname"></ngx-datatable-column>
+                  <ngx-datatable-column [width]="120"  name="Phone"  prop="phoneNumber"></ngx-datatable-column>
+                  <ngx-datatable-column [width]="170"  name="Email"  prop="emailAddress"></ngx-datatable-column>
+                  <ngx-datatable-column name="Role" [width]="120"  prop="roleID">
+                    <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+                      {{row.roleID==1?'SuperAdmin':'User'}}
+                    </ng-template>
+                  </ngx-datatable-column>
+                  <ngx-datatable-column name="ID No"   [width]="100"  prop="nationalID"></ngx-datatable-column>
+                  <ngx-datatable-column name="Reg Date"  prop="createdDate">
+                    <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+                      {{row.createdDate | date : 'yyyy-MM-dd H:mm'}}
+                    </ng-template>
+                  </ngx-datatable-column>
+                  <!-- action buttons -->
+                  <ngx-datatable-column name="Actions" sortable="false" [width]="90">
+                    <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+                      <span>
+                       <button class="btn tblActnBtn h-auto" (click)='editRow(row)' routerLink="/users/create_user"  >
+                        <i class="material-icons">mode_edit</i>
+                           </button>
+                          <button class="btn tblActnBtn h-auto" data-toggle="modal"
+                                  data-target="#editModal" (click)='delete(row)'>
+                                                    <i class="material-icons">delete</i>
+                                                </button>
+                       </span>
+                    </ng-template>
+                  </ngx-datatable-column>
+                </ngx-datatable>
+                <!-- Add Record Modal Window -->
+                <!-- Edit Record Modal Window -->
+                <div class="modal fade" id="editModal" tabindex="-1" role="dialog"
+                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-sm" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <div class="editRowModal">
+                          <div class="modal-header clearfix">
+                            <div class="modal-about">
+                              <div class="font-weight-bold p-t-10 font-17">
+                                Confirm action</div>
+                            </div>
+                          </div>
+                        </div>
+                        <button type="button" class="btn p-t-10 modal-close-button"
+                                data-dismiss="modal" aria-label="Close">
+                          <i class="material-icons">clear</i>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                          <div class="row">
+                            <div class="input-field col-sm-10">
+                              <p>Are you sure, you want to delete? </p>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <div class="button-demo">
+                              <div class="row">
+                                <div class="col-sm-4">
+                                  <button type="button"
+                                          class="btn btn-outline-warning btn-border-radius"
+                                          data-dismiss="modal">Cancel</button>
+                                </div>
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-4">
+                                  <button type="submit" (click)="removeUser()"
+                                          class="btn btn-outline-success btn-border-radius">Delete
+                                  </button>
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

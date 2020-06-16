@@ -1,0 +1,134 @@
+{
+    "data": [
+        {
+            "bNo": "101",
+            "pName": "Sarah Smith",
+            "dName": "DR. Megha Trivedi",
+            "charges": "$120",
+            "date": "21-04-2019",
+            "tax": "8%",
+            "disc": "5%",
+            "total": "$142"
+        },
+        {
+            "bNo": "102",
+            "pName": "Vishal Kumar",
+            "dName": "DR. John Deo",
+            "charges": "$310",
+            "date": "25-04-2019",
+            "tax": "10%",
+            "disc": "5%",
+            "total": "$126"
+        },
+        {
+            "bNo": "103",
+            "pName": "Rahul Malhotra",
+            "dName": "DR. Sarah Smith",
+            "charges": "$310",
+            "date": "01-05-2019",
+            "tax": "9%",
+            "disc": "5%",
+            "total": "$115"
+        },
+        {
+            "bNo": "104",
+            "pName": "Priya Jain",
+            "dName": "DR. Stive",
+            "charges": "$120",
+            "date": "11-05-2019",
+            "tax": "9%",
+            "disc": "5%",
+            "total": "$142"
+        },
+        {
+            "bNo": "105",
+            "pName": "Radhika Patel",
+            "dName": "DR. Megha Trivedi",
+            "charges": "$120",
+            "date": "21-05-2019",
+            "tax": "10%",
+            "disc": "5%",
+            "total": "$126"
+        },
+        {
+            "bNo": "106",
+            "pName": "Sarah Smith",
+            "dName": "DR. Megha Trivedi",
+            "charges": "$120",
+            "date": "21-04-2019",
+            "tax": "8%",
+            "disc": "5%",
+            "total": "$115"
+        },
+        {
+            "bNo": "107",
+            "pName": "Vishal Kumar",
+            "dName": "DR. John Deo",
+            "charges": "$310",
+            "date": "25-04-2019",
+            "tax": "10%",
+            "disc": "5%",
+            "total": "$126"
+        },
+        {
+            "bNo": "108",
+            "pName": "Rahul Malhotra",
+            "dName": "DR. Sarah Smith",
+            "charges": "$310",
+            "date": "01-05-2019",
+            "tax": "9%",
+            "disc": "5%",
+            "total": "$142"
+        },
+        {
+            "bNo": "109",
+            "pName": "Priya Jain",
+            "dName": "DR. Stive",
+            "charges": "$120",
+            "date": "11-05-2019",
+            "tax": "9%",
+            "disc": "5%",
+            "total": "$142"
+        },
+        {
+            "bNo": "110",
+            "pName": "Radhika Patel",
+            "dName": "DR. Megha Trivedi",
+            "charges": "$120",
+            "date": "21-05-2019",
+            "tax": "10%",
+            "disc": "5%",
+            "total": "$126"
+        },
+        {
+            "bNo": "111",
+            "pName": "Sarah Smith",
+            "dName": "DR. Megha Trivedi",
+            "charges": "$120",
+            "date": "21-04-2019",
+            "tax": "8%",
+            "disc": "5%",
+            "total": "$115"
+        },
+        {
+            "bNo": "112",
+            "pName": "Vishal Kumar",
+            "dName": "DR. John Deo",
+            "charges": "$310",
+            "date": "25-04-2019",
+            "tax": "10%",
+            "disc": "5%",
+            "total": "$115"
+        },
+        {
+            "bNo": "113",
+            "pName": "Rahul Malhotra",
+            "dName": "DR. Sarah Smith",
+            "charges": "$310",
+            "date": "01-05-2019",
+            "tax": "9%",
+            "disc": "5%",
+            "total": "$126"
+        }
+    ]
+}

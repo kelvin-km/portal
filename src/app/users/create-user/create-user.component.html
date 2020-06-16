@@ -1,0 +1,135 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="block-header">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <ul class="breadcrumb breadcrumb-style ">
+            <li class="breadcrumb-item">
+              <h4 class="page-title">Users</h4>
+            </li>
+            <li class="breadcrumb-item bcrumb-2">
+              <a routerLink="/users/users-list">user list</a>
+            </li>
+            <li class="breadcrumb-item active">{{ this.auth.updateuser == 1 && this.user? "Update":"Create"}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row clearfix">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+          <div class="body">
+            <div class="row clearfix">
+              <div class="col-sm-12">
+                <form (ngSubmit)="setuser(userform)" #userform="ngForm"  autocomplete="off" >
+                  <h2 class="card-inside-title">User detail</h2>
+                  <div class="row clearfix">
+                    <div class="col-sm-4">
+                      <div class="input-group">
+                        <div class="form-line">
+                          <input type="text" minlength="3" class="form-control" [(ngModel)]="user.firstName" name="firstName" #firstName="ngModel"
+                                 placeholder="first name" required="true">
+                          <small class="col-red"   *ngIf="firstName?.errors && firstName.touched">first name  required </small>
+
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="input-group">
+                        <div class="form-line">
+                          <input type="text" minlength="3" class="form-control" [(ngModel)]="user.middleName" name="middleName" #middleName="ngModel"
+                                 placeholder="Middle  name" required="true">
+                          <small class="col-red"   *ngIf="middleName?.errors && middleName.touched">Middle name  required </small>
+
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="input-group">
+                        <div class="form-line">
+                          <input type="text" minlength="3" class="form-control" [(ngModel)]="user.surname" name="surname" #surname="ngModel"
+                                 placeholder="Surname  name" required="true">
+                          <small class="col-red"   *ngIf="surname?.errors && surname.touched">Surname name  required </small>
+
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="row clearfix">
+                    <div class="col-sm-6">
+                      <div class="input-group">
+                        <div class="form-line">
+                          <input type="tel"   pattern="\d{9}|\d{13}"  class="form-control" [(ngModel)]="user.phoneNumber" name="phoneNumber" #phoneNumber="ngModel"
+                                 placeholder="Mobile phone 2547XXXXXXXXXX" required="true">
+                          <small class="col-red"  *ngIf="phoneNumber?.errors && phoneNumber.touched">Phone number required</small>
+
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-line">
+                        <input type="email" class="form-control" [(ngModel)]="user.emailAddress" name="emailAddress" #emailAddress="ngModel"
+                               placeholder="email address" email="true" required="">
+                        <small class="col-red" *ngIf="emailAddress?.errors && emailAddress.touched">email address required</small>
+
+                      </div>
+                    </div>
+
+
+                  </div>
+
+                  <div class="row clearfix">
+                    <div class="col-sm-6">
+                      <div class="input-group">
+                        <div class="form-line">
+                          <input type="number"   pattern="\d{4}|\d{10}"  class="form-control" [(ngModel)]="user.nationalID" name="nationalID" #nationalID="ngModel"
+                                 placeholder="id number" required="true">
+                          <small class="col-red" *ngIf="nationalID?.errors && nationalID.touched">id number required</small>
+
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="input-group">
+                        <div class="form-line">
+                          <select [(ngModel)]="user.roleID" name="roleID" #roleID="ngModel" required="">
+                            <option  value=""  disabled selected >Select user role</option>
+                            <option value="1">SuperAdmin</option>
+                            <option value="2">User</option>
+                            <option value="3">Subject Care</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row clearfix">
+                    <div class="col-sm-8">
+                      <form>
+                        <div class="card-body ">
+                          <span style="color:red;" *ngIf="message">{{message}}</span>
+                          <label for="files" class="btn">Select user profile</label>
+                          <input #file  id="files" type="file" style="visibility:hidden;" accept='image/*' (change)="preview(file.files)" />
+                          <div class="contact-grid">
+                            <img [src]="imgURL" class="user-img" *ngIf="imgURL">
+                            <div>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                  </div>
+                    <div class="col-sm-4 p-t-20 mt-5">
+                      <button type="submit"  [disabled]="!userform.valid"
+                              class="btn btn-primary btn-border-radius waves-effect m-r-15">Submit</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>

@@ -1,0 +1,115 @@
+
+<section class="content">
+  <div class="container-fluid">
+    <div class="block-header">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <ul class="breadcrumb breadcrumb-style ">
+            <li class="breadcrumb-item">
+              <h4 class="page-title">Agencies</h4>
+            </li>
+            <li class="breadcrumb-item bcrumb-2">
+              <a routerLink="/users/agencies">Agencies list</a>
+            </li>
+            <li class="breadcrumb-item active">{{ this.auth.updateuser == 1 && this.user? "Update":"Create"}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row clearfix">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+          <div class="body">
+            <div class="row clearfix">
+              <div class="col-sm-12">
+                <form (ngSubmit)="setuser(userform)" #userform="ngForm"  autocomplete="off" >
+                  <h2 class="card-inside-title">Agency detail</h2>
+                  <div class="row clearfix">
+                    <div class="col-sm-4">
+                      <div class="input-group">
+                        <div class="form-line">
+<!--                          <label >Agency name</label>-->
+                          <input type="text" minlength="3" class="form-control" [(ngModel)]="user.name" name="name" #name="ngModel"
+                                 placeholder="Agency name" required="true">
+                          <small class="col-red"   *ngIf="name?.errors && name.touched"> name  required </small>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="input-group">
+                        <div class="form-line">
+<!--                          <label >Phone number</label>-->
+                          <input type="tel"   pattern="\d{9}|\d{13}"  class="form-control" [(ngModel)]="user.phone" name="phone" #phone="ngModel"
+                                 placeholder="Phone e.g. 2547XXXXXXXXXX" required="true">
+                          <small class="col-red"    *ngIf="phone?.errors && phone.touched">Phone number required</small>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="input-group">
+                        <div class="form-line">
+                          <select [(ngModel)]="user.status" name="status" #status="ngModel" required="">
+                            <option  value=""  disabled selected >Select agency status</option>
+                            <option value="1">Active</option>
+                            <option value="0">Inactive</option>
+                          </select>
+                          <small class="col-red"   *ngIf="status?.errors && status.touched">Status required </small>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row clearfix">
+                    <div class="col-sm-6">
+                      <div class="input-group">
+<!--                        <label >Email domain</label>-->
+                        <div class="form-line">
+                          <input type="text" minlength="2" pattern="^(?!(https:\/\/|http:\/\/|www\.|mailto:|smtp:|ftp:\/\/|ftps:\/\/))(((([a-zA-Z0-9])|([a-zA-Z0-9][a-zA-Z0-9\-]{0,86}[a-zA-Z0-9]))\.(([a-zA-Z0-9])|([a-zA-Z0-9][a-zA-Z0-9\-]{0,73}[a-zA-Z0-9]))\.(([a-zA-Z0-9]{2,12}\.[a-zA-Z0-9]{2,12})|([a-zA-Z0-9]{2,25})))|((([a-zA-Z0-9])|([a-zA-Z0-9][a-zA-Z0-9\-]{0,162}[a-zA-Z0-9]))\.(([a-zA-Z0-9]{2,12}\.[a-zA-Z0-9]{2,12})|([a-zA-Z0-9]{2,25}))))$"
+                                 class="form-control" [(ngModel)]="user.officelocation" name="officelocation" #officelocation="ngModel"
+                                 placeholder="Email domain" required="true">
+                          <small class="col-red"  *ngIf="officelocation?.errors && officelocation.touched">domain required</small>
+
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-line">
+<!--                        <label>Email</label>-->
+                        <input type="email" class="form-control" [(ngModel)]="user.email" name="email" #email="ngModel"
+                               placeholder="email address" email="true" required="">
+                        <small class="col-red" *ngIf="email?.errors && email.touched">email address required</small>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row clearfix">
+                    <div class="col-sm-8">
+                      <form>
+                        <div class="card-body ">
+                          <span style="color:red;" *ngIf="message">{{message}}</span>
+                          <label for="files" class="btn">Select agency logo</label>
+                          <input #file  id="files" type="file" style="visibility:hidden;" accept='image/*' (change)="preview(file.files)" />
+                          <div class="contact-grid">
+                            <img [src]="imgURL" class="user-img" *ngIf="imgURL">
+                            <div>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="col-sm-4 p-t-20 mt-5">
+                      <button type="submit"  [disabled]="!userform.valid"
+                              class="btn btn-primary btn-border-radius waves-effect m-r-15">Submit</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
