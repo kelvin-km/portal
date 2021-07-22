@@ -96,7 +96,7 @@
     "select2": "^4.0.12",
     "simple-line-icons": "^2.4.1",
     "tslib": "^1.10.0",
-    "xlsx": "^0.15.5",
+    "xlsx": "^0.17.0",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
